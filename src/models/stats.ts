@@ -1,4 +1,4 @@
 export interface Stats {
-  totalEtudiants: number;
-  ageMoyen: number;
+  totalStudents: number;
+  averageAge: number;
 }

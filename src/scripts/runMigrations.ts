@@ -8,9 +8,9 @@ async function runMigrations() {
     const sql = fs.readFileSync(filePath, 'utf8');
 
     await pool.query(sql);
-    console.log('Migration exécutée avec succès !');
+    console.log('Migration executed successfully!');
   } catch (error) {
-    console.error('Erreur de migration :', error);
+    console.error('Migration failed:', error);
   } finally {
     await pool.end();
   }

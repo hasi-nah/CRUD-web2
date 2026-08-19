@@ -9,8 +9,8 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-app.post('/api/login', AuthController.login);
 
+app.post('/api/login', AuthController.login);
 
 app.use('/api/students', apiKeyMiddleware, jwtMiddleware);
 
@@ -23,5 +23,5 @@ app.delete('/api/students/:id', StudentController.delete);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Serveur en ligne sur le port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

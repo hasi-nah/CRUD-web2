@@ -14,6 +14,6 @@ export class AuthController {
       return res.status(200).json({ token });
     }
 
-    return res.status(401).json({ message: 'Identifiants incorrects' });
+    return res.status(401).json({ message: 'Invalid credentials' });
   }
 }
