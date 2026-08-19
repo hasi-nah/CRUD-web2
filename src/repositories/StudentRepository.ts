@@ -13,10 +13,10 @@ export class StudentRepository {
   }
 
   async create(student: Student): Promise<Student> {
-    const { nom, prenom, age } = student;
+    const { nom, prenom, age, email } = student;
     const result = await pool.query(
-      'INSERT INTO students (nom, prenom, age) VALUES ($1, $2, $3) RETURNING *',
-      [nom, prenom, age]
+      'INSERT INTO students (nom, prenom, age, email) VALUES ($1, $2, $3, $4) RETURNING *',
+      [nom, prenom, age, email || null]
     );
     return result.rows[0];
   }
