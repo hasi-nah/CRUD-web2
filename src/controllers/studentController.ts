@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
 import { StudentService } from '../services/StudentService.js';
-
 const studentService = new StudentService();
-
 export class StudentController {
   static async getAll(req: Request, res: Response) {
     try {
@@ -12,7 +10,6 @@ export class StudentController {
       res.status(500).json({ message: 'Internal server error' });
     }
   }
-
   static async getById(req: Request, res: Response) {
     try {
       const id = Number(req.params.id);
@@ -23,7 +20,6 @@ export class StudentController {
       res.status(500).json({ message: 'Internal server error' });
     }
   }
-
   static async getStats(req: Request, res: Response) {
     try {
       const stats = await studentService.getStats();
@@ -32,7 +28,6 @@ export class StudentController {
       res.status(500).json({ message: 'Internal server error' });
     }
   }
-
   static async create(req: Request, res: Response) {
     try {
       const newStudent = await studentService.createStudent(req.body);
@@ -41,7 +36,6 @@ export class StudentController {
       res.status(400).json({ message: error.message || 'Invalid data provided' });
     }
   }
-
   static async delete(req: Request, res: Response) {
     try {
       const id = Number(req.params.id);
