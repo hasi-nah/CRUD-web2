@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { StudentController } from './controllers/studentController.js';
 import { AuthController } from './controllers/authController.js';
 import { apiKeyMiddleware, jwtMiddleware } from './security/auth.js';
+import studentRoutes from './routes/studentRoutes.js';
 
 dotenv.config();
 
@@ -12,14 +12,8 @@ app.use(express.json());
 
 app.post('/api/login', AuthController.login);
 
-app.use('/api/students', apiKeyMiddleware, jwtMiddleware);
 
-
-app.get('/api/students', StudentController.getAll);
-app.get('/api/students/stats', StudentController.getStats);
-app.get('/api/students/:id', StudentController.getById);
-app.post('/api/students', StudentController.create);
-app.delete('/api/students/:id', StudentController.delete);
+app.use('/api', apiKeyMiddleware, jwtMiddleware, studentRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
